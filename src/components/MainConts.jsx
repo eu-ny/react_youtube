@@ -4,14 +4,16 @@ import { Category, Video } from './'
 
 const MainConts = () => {
   // 변수 만들기
-  const [selectCategory, setSelectCategory] = useState('Music')
+  const [selectCategory, setSelectCategory] = useState('playlist')
   const [videos, setVideos] = useState(null)
 
   useEffect(() => {
-    fetchAPI(`search?part=snippet&q=music player`).then((data) =>
-      console.log(data)
+    // &video를 넣게되면 영상만 가져오므로 데이터 오류를 고쳐준다.(작성안할 시 썸네일 이미지가 뜨지 않는 경우가 있다.)
+    fetchAPI(`search?part=snippet&q=${selectCategory}&type=video`).then((data) =>
+      // console.log(data.items)
+      setVideos(data.items)
     )
-  }, [])
+  }, [selectCategory])
 
   return (
     <main id="main">
