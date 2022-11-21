@@ -83,6 +83,9 @@
   }
   .videoTitle {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .channelName {
     display: block;
@@ -91,19 +94,17 @@
   }
 }
 
-
 #videoConts {
-
   .video__inner {
     display: flex;
     margin-top: 100px;
     justify-content: space-between;
     color: white;
-  
+
     .left {
       min-height: 600px;
       width: 75%;
-  
+
       .video__play {
         background-color: gray;
         width: 100%;
@@ -118,20 +119,73 @@
           width: 100%;
           height: 100%;
         }
-
       }
-  
+
       .video__desc {
         width: 100%;
         background-color: rgb(216, 216, 216);
         min-height: 100px;
       }
     }
-  
+
     .right {
       width: 23%;
       min-height: 600px;
       background-color: gray;
+    }
+  }
+}
+
+// media
+@media (max-width: 1200px) {
+  #main {
+    display: contents;
+
+    #aside {
+      width: 100%;
+      min-height: auto;
+      margin-top: 120px;
+
+      > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        button {
+          display: inline-block;
+          width: auto;
+        }
+      }
+    }
+  }
+  #main #contetns {
+    width: 90%;
+    padding: 30px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+  }
+  .videos__inner {
+    > div {
+      width: 32%;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .videos__inner {
+    > div {
+      width: 49%;
+    }
+  }
+}
+@media (max-width: 560px) {
+  .videos__inner {
+    > div {
+      width: 100%;
     }
   }
 }
