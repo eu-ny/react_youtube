@@ -15,6 +15,8 @@ const MainConts = () => {
     )
   }, [selectCategory])
 
+  // if (!selectCategory?.snippet) return <Loader />
+
   return (
     <main id="main">
       <aside id="aside">

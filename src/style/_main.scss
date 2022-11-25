@@ -37,7 +37,7 @@
 
     h2 {
       padding: 5px 0px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
 
       em {
         color: #8d3d3d;
@@ -94,12 +94,14 @@
   }
 }
 
+// videoConts
 #videoConts {
   .video__inner {
     display: flex;
     margin-top: 100px;
     justify-content: space-between;
     color: white;
+    margin-left: 2%;
 
     .left {
       min-height: 600px;
@@ -123,38 +125,107 @@
 
       .video__desc {
         width: 100%;
-        background-color: rgb(216, 216, 216);
+        // background-color: rgb(216, 216, 216);
         min-height: 100px;
+
+        .title {
+          display: block;
+          margin: 20px 0 30px;
+          padding: 10px 10px 20px;
+          font-size: 28px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: rgb(101, 101, 101);
+          }
+        }
+
+        .channel {
+          padding: 0 10px;
+          display: flex;
+          justify-content: space-between;
+
+          .channelTitle {
+            font-size: 18px;
+            color: #d9d9d9;
+          }
+          .desc {
+            text-align: right;
+            color: #d9d9d9;
+
+            .view {
+              margin-right: 20px;
+            }
+            .like {
+              .icon {
+                margin-right: 8px;
+              }
+            }
+          }
+        }
       }
     }
 
     .right {
       width: 23%;
       min-height: 600px;
-      background-color: gray;
+      // background-color: gray;
+    }
+  }
+}
+
+// right
+.videos__inner.column {
+  flex-direction: column;
+  > div {
+    width: 90%;
+    margin-bottom: 0;
+
+    .boxInfo {
+      padding: 3px;
+
+      .channelName {
+        margin: 0 0 10px;
+        margin-top: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+      }
     }
   }
 }
 
 // media
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   #main {
     display: contents;
 
     #aside {
       width: 100%;
       min-height: auto;
-      margin-top: 120px;
+      margin-top: 90px;
+      border-bottom: 1px solid var(--bg-dark-border);
 
       > div {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
 
         button {
           display: inline-block;
           width: auto;
+          font-size: 1rem;
+          padding: 10px 20px 8px;   
         }
       }
     }
@@ -175,17 +246,130 @@
     }
   }
 }
+
 @media (max-width: 800px) {
+  #main {
+    #aside {
+      margin-top: 130px;
+    }
+  }
   .videos__inner {
     > div {
       width: 49%;
+    }
+  }
+  .videos__inner.column {
+    > div {
+      .boxInfo {
+        padding: 0;
+
+        .videoTitle {
+          font-size: 14px;
+        }
+        .channelName {
+          font-size: 14px;
+        }
+      }
     }
   }
 }
 @media (max-width: 560px) {
   .videos__inner {
     > div {
-      width: 100%;
+      width: 90%;
+      margin: 0 auto;
     }
+  }
+  #searchConts{
+    .result {
+      margin-top: 150px;
+    }
+  }
+  img {
+    max-height: 300px !important;
+  }
+}
+
+// cannel
+#ChannelConts {
+  .channel-header {
+    height: 400px;
+    background-image: rgb(207, 154, 154);
+    background-size: cover;
+    background-position: center center;
+  }
+  .channel-info {
+    text-align: center;
+    margin-bottom: 60px;
+
+    img {
+      display: block;
+      width: 250px;
+      max-height: 250px;
+      margin: 0 auto;
+      border-radius: 50%;
+      margin-top: -150px;
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
+    h3 {
+      font-size: 30px;
+      padding: 10px;
+      margin: 20px 0;
+    }
+  }
+  .details {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .channel-videos {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+// search
+#searchConts {
+  display: contents;
+
+  > div {
+    padding: 0 5%;
+    margin-top: 120px;
+
+    .result {
+      margin-bottom: 50px;
+      position: relative;
+      padding-bottom: 15px;
+  
+      em {
+        color: #8d3d3d;
+      }
+      
+      &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        border: 1px dashed rgba(102, 102, 102, 0.518);
+      }
+    }
+  }
+
+
+}
+
+figure {
+  overflow: hidden;
+}
+img {
+  max-height: 150px;
+  object-fit: cover;
+
+  &:hover {
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: scale(1.1);
   }
 }
